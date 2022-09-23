@@ -12,20 +12,17 @@ public class LevelControl : MonoBehaviour
     public Transform pointA, pointB, pointC;
     public int randomPosInit;
 
-    void Start()
-    {
-        SelectPosition();
-    }
 
     void Awake()
     {
-        randomPosInit = Random.Range(1,3);
+        randomPosInit = Random.Range(1,4);
         Debug.Log(randomPosInit);
+        SelectPosition();
     }
 
     void SelectPosition()
     {
-        switch (randomPosInit)
+      /*  switch (randomPosInit)
         {
             case 1:
                 Instantiate(playerController, pointA.position, Quaternion.identity);
@@ -42,6 +39,21 @@ public class LevelControl : MonoBehaviour
                 Instantiate(camPrefab, pointC.position, Quaternion.identity);
                 Debug.Log("caso 3");
                 break;
+        }*/
+        if (randomPosInit == 1)
+        {
+            playerController.transform.position = pointA.position;
+            camPrefab.transform.position = pointA.position;
+        }else if (randomPosInit == 2)
+        {
+            playerController.transform.position = pointB.position;
+            playerController.transform.rotation = pointB.rotation;
+            camPrefab.transform.position = pointB.position;
+        }else if (randomPosInit == 3)
+        {
+            playerController.transform.position = pointC.position;
+            playerController.transform.rotation = pointC.rotation;
+            camPrefab.transform.position = pointC.position;
         }
     }
 }

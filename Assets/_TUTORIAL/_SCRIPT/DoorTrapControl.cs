@@ -54,6 +54,7 @@ public class DoorTrapControl : MonoBehaviour
         if(isOpenClose)
         {
             Vector3 destPosition = target.position - offset;
+            print(destPosition);
             Vector3 smoothedPosition = Vector3.Lerp(transform.position, destPosition, smoothSpeed);
             target.position = smoothedPosition;
             isOpen = false;

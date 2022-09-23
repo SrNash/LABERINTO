@@ -25,15 +25,17 @@ public class PlayerController : MonoBehaviour
         
         transform.Translate(posX,posY,posZ);
 
+
+        /// <summary>
+        /// Rotacion del PJC
+        /// </summary>
         float rotation = posX * rotationSpeed;
         if (posX > 0 )
         {
             transform.Rotate(0f, rotation, 0f);
-            //transform.Rotate(Vector3.forward * rotation);
         }else if(posX < 0)
         {
             transform.Rotate(0f, rotation, 0f);
-            //transform.Rotate(Vector3.forward * -rotation);
         }
     }
 }
