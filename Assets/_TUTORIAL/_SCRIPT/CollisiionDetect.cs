@@ -8,9 +8,16 @@ public class CollisiionDetect : MonoBehaviour
     [SerializeField]
     Material mt_WallChange;
 
+    [SerializeField]
+    MeshRenderer meshRenderer;
+
     bool matChanged = false;
     float timerMTChange = 5f;
 
+    void Start()
+    {
+        if(meshRenderer == null)meshRenderer = gameObject.GetComponent<MeshRenderer>();
+    }
     private void Update()
     {
         if(matChanged) timerMTChange -= Time.deltaTime;
@@ -28,13 +35,13 @@ public class CollisiionDetect : MonoBehaviour
         if(col.gameObject.tag == "Player")
         {
             Debug.Log(col.gameObject.name);
-            gameObject.GetComponent<MeshRenderer>().material = mt_WallChange;
+            meshRenderer.material = mt_WallChange;
             matChanged = true;
         }
         else if (col.gameObject.tag != "Player")
         {
             Debug.Log("Volviendo a cambiar el material");
-            gameObject.GetComponent<MeshRenderer>().material = mt_Wall;
+            meshRenderer.material = mt_Wall;
         }
     }    
 }
